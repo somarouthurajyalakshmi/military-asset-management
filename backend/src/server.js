@@ -38,6 +38,53 @@ app.get('/', (req, res) => {
   res.json({ message: 'Military Asset Management API is running' });
 });
 
+// ========== TEMPORARY SEED ROUTE ==========
+app.get('/api/seed-now', async (req, res) => {
+  try {
+    const bcrypt = require('bcryptjs');
+    const User = require('./models/User');
+    const Base = require('./models/Base');
+    const Equipment = require('./models/Equipment');
+
+    await User.deleteMany({});
+    await Base.deleteMany({});
+    await Equipment.deleteMany({});
+
+    const bases = await Base.insertMany([
+      { name: 'Northern Command', location: 'Jammu' },
+      { name: 'Southern Command', location: 'Pune' },
+      { name: 'Eastern Command', location: 'Kolkata' },
+      { name: 'Western Command', location: 'Chandimandir' }
+    ]);
+
+    await Equipment.insertMany([
+      { name: 'AK-47 Rifle', type: 'Weapon', unit: 'pieces' },
+      { name: 'T-90 Tank', type: 'Vehicle', unit: 'units' },
+      { name: '5.56mm Ammunition', type: 'Ammunition', unit: 'rounds' },
+      { name: 'Bofors Gun', type: 'Artillery', unit: 'units' }
+    ]);
+
+    const hashed = await bcrypt.hash('admin123', 10);
+    await User.create([
+      { name: 'System Admin', email: 'admin@military.gov', password: hashed, role: 'admin' },
+      { name: 'Base Commander', email: 'commander.nc@military.gov', password: hashed, role: 'base_commander', assignedBase: bases[0]._id },
+      { name: 'Logistics Officer', email: 'logistics@military.gov', password: hashed, role: 'logistics_officer' }
+    ]);
+
+    res.json({
+      success: true,
+      message: 'Database seeded successfully',
+      credentials: {
+        admin: 'admin@military.gov / admin123',
+        commander: 'commander.nc@military.gov / admin123',
+        logistics: 'logistics@military.gov / admin123'
+      }
+    });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}); 
+
 // Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
