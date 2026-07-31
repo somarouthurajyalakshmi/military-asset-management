@@ -64,12 +64,11 @@ app.get('/api/seed-now', async (req, res) => {
       { name: 'Bofors Gun', type: 'other', unit: 'units' }
     ]);
 
-    const hashed = await bcrypt.hash('admin123', 10);
-    await User.create([
-      { name: 'System Admin', email: 'admin@military.gov', password: hashed, role: 'admin' },
-      { name: 'Base Commander', email: 'commander.nc@military.gov', password: hashed, role: 'base_commander', assignedBase: bases[0]._id },
-      { name: 'Logistics Officer', email: 'logistics@military.gov', password: hashed, role: 'logistics_officer' }
-    ]);
+      await User.create([
+        { name: 'System Admin', email: 'admin@military.gov', password: 'admin123', role: 'admin' },
+        { name: 'Base Commander', email: 'commander.nc@military.gov', password: 'admin123', role: 'base_commander', assignedBase: bases[0]._id },
+        { name: 'Logistics Officer', email: 'logistics@military.gov', password: 'admin123', role: 'logistics_officer' }
+          ]);
 
     res.json({
       success: true,
