@@ -51,17 +51,17 @@ app.get('/api/seed-now', async (req, res) => {
     await Equipment.deleteMany({});
 
     const bases = await Base.insertMany([
-      { name: 'Northern Command', location: 'Jammu' },
-      { name: 'Southern Command', location: 'Pune' },
-      { name: 'Eastern Command', location: 'Kolkata' },
-      { name: 'Western Command', location: 'Chandimandir' }
+      { name: 'Northern Command', location: 'Jammu', code: 'NC' },
+      { name: 'Southern Command', location: 'Pune', code: 'SC' },
+      { name: 'Eastern Command', location: 'Kolkata', code: 'EC' },
+      { name: 'Western Command', location: 'Chandimandir', code: 'WC' }
     ]);
 
     await Equipment.insertMany([
-      { name: 'AK-47 Rifle', type: 'Weapon', unit: 'pieces' },
-      { name: 'T-90 Tank', type: 'Vehicle', unit: 'units' },
-      { name: '5.56mm Ammunition', type: 'Ammunition', unit: 'rounds' },
-      { name: 'Bofors Gun', type: 'Artillery', unit: 'units' }
+      { name: 'AK-47 Rifle', type: 'weapon', unit: 'pieces' },
+      { name: 'T-90 Tank', type: 'vehicle', unit: 'units' },
+      { name: '5.56mm Ammunition', type: 'ammunition', unit: 'rounds' },
+      { name: 'Bofors Gun', type: 'other', unit: 'units' }
     ]);
 
     const hashed = await bcrypt.hash('admin123', 10);
@@ -83,8 +83,8 @@ app.get('/api/seed-now', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-}); 
-
+});
+// ========== END ==========
 // Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
