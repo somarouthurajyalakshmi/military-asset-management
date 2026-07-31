@@ -231,22 +231,22 @@ This structure directly supports Opening/Closing balances, clear history, and ro
 ## Screenshots
 
 ### Login Page
-![Login](./screenshots/01-login.png)
+![Login](./screenshots-only/military-asset-management/screenshots/01-login.png)
 
 ### Dashboard
-![Dashboard](./screenshots/02-dashboard.png)
+![Dashboard](./screenshots-only/military-asset-management/screenshots/02-dashboard.png)
 
 ### Purchases
-![Purchases](./screenshots/03-purchases.png)
+![Purchases](./screenshots-only/military-asset-management/screenshots/03-purchases.png)
 
 ### Transfers Form
-![Transfers Form](./screenshots/04-transfers-form.png)
+![Transfers Form](./screenshots-only/military-asset-management/screenshots/04-transfers-form.png)
 
 ### Transfers List
-![Transfers List](./screenshots/05-transfers-list.png)
+![Transfers List](./screenshots-only/military-asset-management/screenshots/05-transfers-list.png)
 
 ### Assignments
-![Assignments](./screenshots/06-assignments.png)
+![Assignments](./screenshots-only/military-asset-management/screenshots/06-assignments.png)
 
 ---
 
