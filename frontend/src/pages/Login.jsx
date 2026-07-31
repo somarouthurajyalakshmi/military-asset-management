@@ -164,8 +164,8 @@ export default function Login({ onLogin }) {
             Demo Credentials
           </p>
           <p style={{ margin: '3px 0' }}>Admin: admin@military.gov / admin123</p>
-          <p style={{ margin: '3px 0' }}>Commander: commander.nc@military.gov / commander123</p>
-          <p style={{ margin: '3px 0' }}>Logistics: logistics@military.gov / logistics123</p>
+          <p style={{ margin: '3px 0' }}>Commander: commander.nc@military.gov / admin123</p>
+          <p style={{ margin: '3px 0' }}>Logistics: logistics@military.gov / admin123</p>
         </div>
       </div>
     </div>
